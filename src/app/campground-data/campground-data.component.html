@@ -1,0 +1,13 @@
+<form>
+  <label for="lat">Enter the lat</label>
+  <input #lat>
+  <label for="long">Enter the long</label>
+  <input #long>
+  <button (click)="findCampgrounds(lat.value, long.value)">Enter</button>
+  <div *ngFor="let area of rec">
+    <h1>{{area.RecAreaName}}</h1>
+    <h1>{{area.RecAreaDescription}}</h1>
+    <h1>{{area.Keywords}}</h1>
+    <h1>{{area.RecAreaPhone}}</h1>
+  </div>
+</form>
