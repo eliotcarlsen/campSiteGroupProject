@@ -1,0 +1,6 @@
+<div> {{ (user | async)?.displayName }} </div>
+<button (click)="logInGoogle()">Google Login</button>
+<button (click)="logOut()">Logout</button><br>
+
+<button (click)="logInTwitter()">Twitter Login</button>
+<button (click)="logOut()">Twitter Logout</button>
