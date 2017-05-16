@@ -1,10 +1,6 @@
 <form>
-  <label for="lat">Enter the lat</label>
-  <input #lat>
-  <label for="long">Enter the long</label>
-  <input #long>
-  <button (click)="findCampsites(lat.value, long.value)">Enter</button>
   <div class="panel panel-default">
+  <app-map></app-map>
   <div class="panel-body" *ngFor="let site of data1">
     <h3>FacilityID{{site.FacilityID}}</h3>
     <h3>FacilityName{{site.FacilityName}}</h3>

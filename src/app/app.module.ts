@@ -10,6 +10,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { CampgroundDataComponent } from './campground-data/campground-data.component';
 import { ApiKey } from './RIDB-API';
 import { MapComponent } from './map/map.component';
+ import { NguiMapModule } from '@ngui/map';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -30,7 +31,10 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NguiMapModule.forRoot({
+     apiUrl: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyARXikf8fvb_SyWNSCBBOGkhz7NHHcMC5w&callback=initMap'
+   })
   ],
   providers: [],
   bootstrap: [AppComponent]
