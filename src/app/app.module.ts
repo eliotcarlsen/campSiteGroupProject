@@ -14,6 +14,7 @@ import { MapComponent } from './map/map.component';
 import { CleverbotComponent } from './cleverbot/cleverbot.component';
 import { WeatherComponent } from './weather/weather.component';
 import { NguiMapModule } from '@ngui/map';
+import { routing } from './app.routing';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -39,6 +40,7 @@ export const firebaseConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    routing,
     NguiMapModule.forRoot({
      apiUrl: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyARXikf8fvb_SyWNSCBBOGkhz7NHHcMC5w&callback=initMap'
    })

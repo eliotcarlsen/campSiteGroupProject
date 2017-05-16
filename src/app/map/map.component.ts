@@ -3,6 +3,7 @@ import { ApiKey } from '../RIDB-API';
 import { Http } from '@angular/http';
 import { GoogleMapService } from '../google-map.service';
 import { CampInfoDataService } from '../camp-info-data.service';
+import { routing } from '../app.routing';
 
 @Component({
   selector: 'app-map',
