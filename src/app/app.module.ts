@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { CampgroundDataComponent } from './campground-data/campground-data.component';
 import { ApiKey } from './RIDB-API';
+import { MapComponent } from './map/map.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -21,7 +22,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    CampgroundDataComponent
+    CampgroundDataComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
