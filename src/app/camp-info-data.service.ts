@@ -12,7 +12,7 @@ export class CampInfoDataService {
   area;
   sites;
   campsites;
-  
+
   fetchCampsites(lat, long){
     return this.http.get('https://ridb.recreation.gov/api/v1/facilities?limit=50&longitude=' + long + '&latitude=' + lat + '&radius=100&apikey=' + this.apikey.apikey).map(
       (sites) => sites.json()
