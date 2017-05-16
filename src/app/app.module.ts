@@ -36,7 +36,7 @@ export const firebaseConfig = {
      apiUrl: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyARXikf8fvb_SyWNSCBBOGkhz7NHHcMC5w&callback=initMap'
    })
   ],
-  providers: [],
+  providers: [ApiKey],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
