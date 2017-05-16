@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { CampgroundDataComponent } from './campground-data/campground-data.component';
 import { ApiKey } from './RIDB-API';
+import { BotApi } from './botApiKey';
 import { MapComponent } from './map/map.component';
+import { CleverbotComponent } from './cleverbot/cleverbot.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -23,7 +25,8 @@ export const firebaseConfig = {
     AppComponent,
     AuthenticationComponent,
     CampgroundDataComponent,
-    MapComponent
+    MapComponent,
+    CleverbotComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [BotApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

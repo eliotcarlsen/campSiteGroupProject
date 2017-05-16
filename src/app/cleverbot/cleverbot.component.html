@@ -1,0 +1,5 @@
+<div *ngFor="let conversation of conversations">
+  <p>{{conversation.output}}</p>
+</div>
+<input #conversation placeholder="Ask Cleverbot">
+<button class="btn btn-xs btn-primary"(click)="addConversation(conversation.value)">Ask Cleverbot</button>
