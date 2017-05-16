@@ -1,0 +1,33 @@
+
+<input #lat placeholder="latitude">
+<input #long placeholder="longitude">
+<button  (click)="searchWeather(lat.value, long.value)" (click)="fred=!fred">Search</button>
+<div *ngIf="fred">
+  <div class="container">
+    <div class="row">
+      <div class="maxIsCool">
+        <div class="col-lg-4">
+          <h3>Today</h3>
+          <img src="assets/img/{{threeDayForcast[2]}}"><br>
+          {{threeDayForcast[3]}}<br>
+          High: {{threeDayForcast[0]}} °F<br>
+          Low: {{threeDayForcast[1]}} °F<br>
+        </div>
+        <div class="col-lg-4">
+          <h3>Tomorrow</h3>
+          <img src="assets/img/{{threeDayForcast[6]}}"><br>
+          {{threeDayForcast[7]}}<br>
+          High: {{threeDayForcast[4]}} °F<br>
+          Low: {{threeDayForcast[5]}} °F<br>
+        </div>
+        <div class="col-lg-4">
+          <h3>The Next Day</h3>
+          <img src="assets/img/{{threeDayForcast[10]}}"><br>
+          {{threeDayForcast[11]}}<br>
+          High: {{threeDayForcast[8]}} °F<br>
+          Low: {{threeDayForcast[9]}} °F<br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
