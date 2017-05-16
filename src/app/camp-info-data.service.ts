@@ -7,24 +7,28 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CampInfoDataService {
-
-  constructor(private apikey: ApiKey, private http: Http) { }
   area;
   sites;
-  campsites;
-  
-  fetchCampsites(lat, long){
+
+  constructor(private apikey: ApiKey, private http: Http) { }
+
+  fetchCampsites(lat, long) {
     return this.http.get('https://ridb.recreation.gov/api/v1/facilities?limit=50&longitude=' + long + '&latitude=' + lat + '&radius=100&apikey=' + this.apikey.apikey).map(
       (sites) => sites.json()
     );
   }
 
   test(idArray) {
-    for(var i = 0; i < idArray.length; i++) {
+    var campsites = [];
+    for (var i = 0; i < idArray.length; i++) {
       this.http.get('https://ridb.recreation.gov/api/v1/facilities/' + idArray[i] + '/campsites?apikey=' + this.apikey.apikey).map(
         (data) => data.json()
       ).subscribe((data) => {
-        console.log(data);
+        console.log(data.RECDATA);
+
+        // console.log(data.RECDATA);
+        campsites.push(data.RECDATA.length);
+        console.log(campsites);
       });
     }
   }

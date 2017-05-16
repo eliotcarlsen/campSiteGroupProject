@@ -12,6 +12,8 @@ import { ApiKey } from './RIDB-API';
 import { BotApi } from './botApiKey';
 import { MapComponent } from './map/map.component';
 import { CleverbotComponent } from './cleverbot/cleverbot.component';
+import { WeatherComponent } from './weather/weather.component';
+import { NguiMapModule } from '@ngui/map';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -26,16 +28,23 @@ export const firebaseConfig = {
     AuthenticationComponent,
     CampgroundDataComponent,
     MapComponent,
-    CleverbotComponent
+    CleverbotComponent,
+    WeatherComponent,
+    MapComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NguiMapModule.forRoot({
+     apiUrl: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyARXikf8fvb_SyWNSCBBOGkhz7NHHcMC5w&callback=initMap'
+   })
   ],
-  providers: [BotApi],
+
+  providers: [ApiKey, BotApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
