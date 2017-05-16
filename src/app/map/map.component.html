@@ -1,3 +1,20 @@
-<p>
-  map works!
-</p>
+<h2>Map</h2>
+
+<div class="form-group">
+  <input #place placeholder="enter a place">
+  <button (click)="search(place.value); place.value=''">Search</button>
+</div>
+
+<ngui-map
+  zoom="7" [center]="location"
+  mapTypeId="terrain"
+  (mapClick)="onMapClick($event)"
+  (mapReady$)="onMapReady($event)">
+  <marker *ngFor="let pos of markers" [position]="pos"></marker>
+  <map-circle center="5.337113527125027, 8.789215082069859"
+      [strokeColor]="'#FF0000'"
+      [strokeOpacity]="0.8"
+      [strokeWeight]="2"
+      [editable]="true"
+      radius="100"></map-circle>
+</ngui-map>

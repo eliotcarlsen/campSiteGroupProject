@@ -7,31 +7,31 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CampInfoDataService {
-
-  constructor(private apikey: ApiKey, private http: Http) { }
   area;
   sites;
 
-  fetchCampsites(lat, long){
+  constructor(private apikey: ApiKey, private http: Http) { }
+
+  fetchCampsites(lat, long) {
     return this.http.get('https://ridb.recreation.gov/api/v1/facilities?limit=50&longitude=' + long + '&latitude=' + lat + '&radius=100&apikey=' + this.apikey.apikey).map(
       (sites) => sites.json()
     );
   }
 
-    test(idArray) {
-      var campsites=[];
-      for(var i = 0; i < idArray.length; i++) {
-        this.http.get('https://ridb.recreation.gov/api/v1/facilities/' + idArray[i] + '/campsites?apikey=' + this.apikey.apikey).map(
-          (data) => data.json()
-        ).subscribe((data) => {
-          console.log(data.RECDATA);
+  test(idArray) {
+    var campsites = [];
+    for (var i = 0; i < idArray.length; i++) {
+      this.http.get('https://ridb.recreation.gov/api/v1/facilities/' + idArray[i] + '/campsites?apikey=' + this.apikey.apikey).map(
+        (data) => data.json()
+      ).subscribe((data) => {
+        console.log(data.RECDATA);
 
-          // console.log(data.RECDATA);
-          campsites.push(data.RECDATA.length);
-          console.log(campsites);
-        });
-      }
+        // console.log(data.RECDATA);
+        campsites.push(data.RECDATA.length);
+        console.log(campsites);
+      });
     }
+  }
 }
 
 // facilities...https://ridb.recreation.gov/api/v1/facilities?longitude=-122.3&latitude=47.6&radius=200&apikey=95E186940F8141F5A5A6F758F9A703EB
