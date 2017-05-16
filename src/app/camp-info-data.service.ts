@@ -13,4 +13,12 @@ export class CampInfoDataService {
       (res) => res.json()
     );
   }
+  fetchCampsites(lat, long){
+    return this.http.get('https://ridb.recreation.gov/api/v1/facilities?longitude=' + long + '&latitude=' + lat + '&radius=100&apikey=' + this.apikey.apikey).map(
+      (res) => res.json()
+    );
+  }
 }
+
+// facilities...https://ridb.recreation.gov/api/v1/facilities?longitude=-122.3&latitude=47.6&radius=200&apikey=95E186940F8141F5A5A6F758F9A703EB
+// campsites... https://ridb.recreation.gov/api/v1/facilities/231978/campsites?apikey=95E186940F8141F5A5A6F758F9A703EB

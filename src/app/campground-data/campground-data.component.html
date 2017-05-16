@@ -3,11 +3,20 @@
   <input #lat>
   <label for="long">Enter the long</label>
   <input #long>
-  <button (click)="findCampgrounds(lat.value, long.value)">Enter</button>
-  <div *ngFor="let area of rec">
-    <h1>{{area.RecAreaName}}</h1>
-    <h1>{{area.RecAreaDescription}}</h1>
-    <h1>{{area.Keywords}}</h1>
-    <h1>{{area.RecAreaPhone}}</h1>
+  <button (click)="findCampgrounds(lat.value, long.value)" (click)="findCampsites(lat.value, long.value)">Enter</button>
+  <div *ngFor="let area of recAreas">
+    <h4>{{area.RecAreaName}}</h4>
+    <h4>{{area.RecAreaDescription}}</h4>
+    <h4>{{area.Keywords}}</h4>
+    <h4>{{area.RecAreaPhone}}</h4>
   </div>
+  <div class="panel panel-default">
+  <div class="panel-body" *ngFor="let site of campsites">
+    <h3>{{site.FacilityID}}</h3>
+    <h3>{{site.FacilityName}}</h3>
+    <h3>{{site.FacilityUseFeeDescription}}</h3>
+    <h3>{{site.FacilityTypeDescription}}</h3>
+    <h3>{{site.LegacyFacilityID}}</h3>
+  </div>
+</div>
 </form>

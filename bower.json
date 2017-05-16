@@ -1,0 +1,20 @@
+{
+  "name": "camp-site",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Eliot Carlsen <eliot.carlsen@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/eliotcarlsen/campSiteGroupProject",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
