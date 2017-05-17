@@ -13,19 +13,19 @@ import * as firebase from 'firebase/app';
   providers: [FirebaseService, AngularFireAuth]
 })
 export class AuthenticationComponent implements OnInit {
+  user: Observable<firebase.User>;
   constructor(private firebaseService: FirebaseService, public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
   }
-  user: Observable<firebase.User>;
   ngOnInit() {
   }
-  logInGoogle(){
+  logInGoogle() {
     this.firebaseService.login();
   }
-  logInTwitter(){
+  logInTwitter() {
     this.firebaseService.twitterLogin();
   }
-  logOut(){
+  logOut() {
     this.firebaseService.logOut();
   }
 }

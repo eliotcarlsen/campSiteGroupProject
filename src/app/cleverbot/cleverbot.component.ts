@@ -15,7 +15,7 @@ export class CleverbotComponent implements OnInit {
   ngOnInit() {
   }
 
-  addConversation(input){
+  addConversation(input) {
     this.conversations = [];
     this.cleverbotService.getClever(input).subscribe(
       (data) => this.conversations.push(data)

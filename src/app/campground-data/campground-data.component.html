@@ -1,12 +1,22 @@
-<div class="panel panel-default" *ngFor="let site of data1">
+<div class="panel panel-default" *ngIf="facility">
   <div class="panel-body">
-    <h3>FacilityID:{{site.FacilityID}}</h3>
-    <h3>FacilityName:{{site.FacilityName}}</h3>
-    <h3>FacilityUseFeeDescription:{{site.FacilityUseFeeDescription}}</h3>
-    <h3>FacilityTypeDescription:{{site.FacilityTypeDescription}}</h3>
-    <h3>LegacyFacilityID:{{site.LegacyFacilityID}}</h3>
-    <div *ngFor="let sites of data2">
-      <h3>Number of Sites:{{sites.length}}</h3>
-    </div>
+    <h4>FacilityID:{{facility.FacilityID}}</h4>
+    <h4>FacilityName:{{facility.FacilityName}}</h4>
+    <h4>Facility Phone:{{facility.FacilityPhone}}</h4>
+    <h4>FacilityTypeDescription:{{facility.FacilityTypeDescription}}</h4>
+    <h4>LegacyFacilityID:{{facility.LegacyFacilityID}}</h4>
+    <h4>Last Updated Date: {{facility.LastUpdatedDate}}</h4>
+    <h4>In {{facility.FacilityName}} area, there are {{totalCampsitesNum}} campsites in total. There are {{currentCount}} campsites showing below</h4>
   </div>
+  <ol class="col-md-6">
+    <div class="campsites" *ngFor="let campsite of campsites">
+      <li>
+        <em>Campsite Name: {{campsite.CampsiteName}}</em>
+        <p>Type: {{campsite.CampsiteType}}</p>
+        <div *ngFor="let attribute of campsite.ATTRIBUTES">
+          <p>{{attribute.AttributeName}}: {{attribute.AttributeValue}}</p>
+        </div>
+      </li>
+    </div>
+  </ol>
 </div>

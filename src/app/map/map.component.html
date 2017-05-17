@@ -12,6 +12,12 @@
   </nav>
 </div>
 
+<div id="weather" *ngIf="cityName">
+  <li>{{cityName}}</li>
+  <li>Day Temp: {{dayTemp}}</li>
+  <li>Eve Temp: {{eveTemp}}</li>
+</div>
+
 <div id="map">
   <ngui-map
     zoom="8" [center]="location"
@@ -22,16 +28,16 @@
     <info-window id="iw">
       <h4>{{title}}</h4>
       <p>{{direction}}</p>
-      <button (click)="seeDetail()">See Detail</button>
+      <li>Day Temp: {{markerDayTemp}}</li>
+      <li>Night Temp: {{markerEveTemp}}</li>
+      <button (click)="seeDetail(facilities)">See Detail</button>
     </info-window>
   </ngui-map>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <app-campground-data></app-campground-data>
-    <app-weather></app-weather>
-  </div>
+<div class="col-md-12">
+  <app-campground-data [facility]="facility" [totalCampsitesNum]="totalCampsitesNum" [currentCount]="currentCount" [campsites]="campsites"></app-campground-data>
+  <app-weather [facility]="facility" [threeDayForcast]="threeDayForcast"></app-weather>
 </div>
 
 <app-cleverbot></app-cleverbot>
