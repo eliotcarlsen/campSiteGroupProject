@@ -12,11 +12,11 @@
   </nav>
 </div>
 
-
 <p>welcome {{(user | async)?.displayName}}</p>
 <li>signed in as {{(user | async)?.email}}</li>
-<img src="{{(user | async)?.photoURL}}">
+<img class="profile" src="{{(user | async)?.photoURL}}">
 <button (click)="logout()">Log Out</button>
+
 
 <div id="map">
   <ngui-map
@@ -36,12 +36,6 @@
 </div>
 
 <app-cleverbot></app-cleverbot>
-
-<div id="weather" *ngIf="cityName">
-  <li>{{cityName}}</li>
-  <li>Day Temp: {{dayTemp}}</li>
-  <li>Eve Temp: {{eveTemp}}</li>
-</div>
 
 <div class="col-md-12">
   <app-campground-data [facility]="facility" [totalCampsitesNum]="totalCampsitesNum" [currentCount]="currentCount" [campsites]="campsites"></app-campground-data>
