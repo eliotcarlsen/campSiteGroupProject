@@ -18,19 +18,10 @@ export class CampInfoDataService {
     );
   }
 
-  test(idArray) {
-    var campsites = [];
-    for (var i = 0; i < idArray.length; i++) {
-      this.http.get('https://ridb.recreation.gov/api/v1/facilities/' + idArray[i] + '/campsites?apikey=' + this.apikey.apikey).map(
-        (data) => data.json()
-      ).subscribe((data) => {
-        console.log(data.RECDATA);
-
-        // console.log(data.RECDATA);
-        campsites.push(data.RECDATA.length);
-        console.log(campsites);
-      });
-    }
+  test(id) {
+    return this.http.get('https://ridb.recreation.gov/api/v1/facilities/' + id + '/campsites?apikey=' + this.apikey.apikey).map(
+      (data) => data.json()
+    );
   }
 }
 

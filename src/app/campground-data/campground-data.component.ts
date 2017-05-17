@@ -12,7 +12,11 @@ export class CampgroundDataComponent implements OnInit {
   recAreas;
   facId=[];
   data1=[];
-  
+  @Input() facility;
+  @Input() totalCampsitesNum;
+  @Input() currentCount;
+  @Input() campsites;
+
   constructor(private campInfoDataService: CampInfoDataService, private apikey: ApiKey) { }
 
   ngOnInit() {
@@ -31,4 +35,5 @@ export class CampgroundDataComponent implements OnInit {
       this.campInfoDataService.test(this.facId);
     })
   }
+
 }
