@@ -6,12 +6,12 @@ import 'rxjs/Rx';
 @Injectable()
 export class CleverbotService {
 
-  constructor(private http:Http, private ApiKey: BotApi) { }
+  cleverapi = this.ApiKey.botapi;
 
-  cleverapi: string = this.ApiKey.botapi;
+  constructor(private http: Http, private ApiKey: BotApi) { }
 
-  getClever(input){
-    return this.http.get("https://www.cleverbot.com/getreply?input=" + input + "&key=" + this.cleverapi).map(
+  getClever(input) {
+    return this.http.get('https://www.cleverbot.com/getreply?input=' + input + '&key=' + this.cleverapi).map(
       (res) => res.json()
     );
   }
