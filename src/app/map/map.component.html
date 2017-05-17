@@ -13,6 +13,11 @@
 </div>
 
 
+<p>welcome {{(user | async)?.displayName}}</p>
+<li>signed in as {{(user | async)?.email}}</li>
+<img src="{{(user | async)?.photoURL}}">
+<button (click)="logout()">Log Out</button>
+
 <div id="map">
   <ngui-map
     zoom="8" [center]="location"

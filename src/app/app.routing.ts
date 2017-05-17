@@ -11,7 +11,7 @@ const appRoutes: Routes = [
     component: AuthenticationComponent
   },
   {
-    path: 'results',
+    path: 'results/:id',
     component: MapComponent
   }
 ];
