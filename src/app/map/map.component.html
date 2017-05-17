@@ -20,12 +20,6 @@
 <img src="{{(user | async)?.photoURL}}">
 <button (click)="logout()">Log Out</button>
 
-<div id="weather" *ngIf="cityName">
-  <li>{{cityName}}</li>
-  <li>Day Temp: {{dayTemp}}</li>
-  <li>Eve Temp: {{eveTemp}}</li>
-</div>
-
 <div id="map">
   <ngui-map
     zoom="8" [center]="location"
@@ -43,9 +37,15 @@
   </ngui-map>
 </div>
 
+<app-cleverbot></app-cleverbot>
+
+<div id="weather" *ngIf="cityName">
+  <li>{{cityName}}</li>
+  <li>Day Temp: {{dayTemp}}</li>
+  <li>Eve Temp: {{eveTemp}}</li>
+</div>
+
 <div class="col-md-12">
   <app-campground-data [facility]="facility" [totalCampsitesNum]="totalCampsitesNum" [currentCount]="currentCount" [campsites]="campsites"></app-campground-data>
   <app-weather [facility]="facility" [threeDayForcast]="threeDayForcast"></app-weather>
 </div>
-
-<app-cleverbot></app-cleverbot>

@@ -1,7 +1,21 @@
 <div id="cleverbot">
-  <div *ngFor="let conversation of conversations">
-    <p>{{conversation.output}}</p>
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngFor="let conversation of conversations">
+        <p class="response">{{conversation.output}}</p>
+      </div>
+    </div>
+    <div class="col-md-4 cleverbot">
+      <div class="row bot-group">
+        <div class="col-md-7 bot-field">
+          <div class="form-group">
+            <input class="form-control" #conversation placeholder="Ask Cleverbot">
+          </div>
+        </div>
+          <div class="col-md-5">
+            <button class="btn btn-primary"(click)="addConversation(conversation.value)">Ask Cleverbot</button>
+          </div>
+      </div>
+    </div>
   </div>
-  <input #conversation placeholder="Ask Cleverbot">
-  <button class="btn btn-xs btn-primary"(click)="addConversation(conversation.value)">Ask Cleverbot</button>
 </div>
