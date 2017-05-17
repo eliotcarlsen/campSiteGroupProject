@@ -5,6 +5,12 @@
   <button (click)="search(place.value); place.value=''">Search</button>
 </div>
 
+<div id="weather" *ngIf="cityName">
+  <li>{{cityName}}</li>
+  <li>Day Temp: {{dayTemp}}</li>
+  <li>Eve Temp: {{eveTemp}}</li>
+</div>
+
 <ngui-map
   zoom="7" [center]="location"
   mapTypeId="terrain"
