@@ -5,14 +5,20 @@ import { GoogleMapService } from '../google-map.service';
 import { CampInfoDataService } from '../camp-info-data.service';
 import { routing } from '../app.routing';
 import { WeatherService } from '../weather.service';
+import { FirebaseService } from '../firebase.service';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
-  providers: [GoogleMapService, CampInfoDataService, WeatherService],
+  providers: [GoogleMapService, CampInfoDataService, WeatherService, FirebaseService, AngularFireAuth],
 })
 export class MapComponent implements OnInit {
+  user: Observable<firebase.User>;
   //  position: string = this.lat + ',' + this.lng;
   cityName;
   dayTemp;
@@ -36,7 +42,9 @@ export class MapComponent implements OnInit {
   weathers;
   condition;
   output;
-  constructor(private http: Http, private googlemapservice: GoogleMapService, private campInfoDataService: CampInfoDataService, private weatherService: WeatherService) { }
+  constructor(private http: Http, private googlemapservice: GoogleMapService, private campInfoDataService: CampInfoDataService, private weatherService: WeatherService, private firebaseService: FirebaseService, private afAuth: AngularFireAuth) {
+    this.user = afAuth.authState;
+  }
 
   ngOnInit() {
   }
@@ -131,5 +139,9 @@ export class MapComponent implements OnInit {
       this.currentCount = data.METADATA.RESULTS.CURRENT_COUNT;
       console.log(this.campsites);
     });
+  }
+
+  logout() {
+    this.firebaseService.logOut();
   }
 }

@@ -15,6 +15,8 @@ import { CleverbotComponent } from './cleverbot/cleverbot.component';
 import { WeatherComponent } from './weather/weather.component';
 import { NguiMapModule } from '@ngui/map';
 import { routing } from './app.routing';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -46,7 +48,7 @@ export const firebaseConfig = {
    })
   ],
 
-  providers: [ApiKey, BotApi],
+  providers: [ApiKey, BotApi, AngularFireAuth, AngularFireDatabase],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
