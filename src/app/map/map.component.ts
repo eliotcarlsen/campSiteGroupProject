@@ -8,13 +8,16 @@ import { CampInfoDataService } from '../camp-info-data.service';
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
-  providers: [GoogleMapService, CampInfoDataService]
+  providers: [GoogleMapService, CampInfoDataService],
 })
 export class MapComponent implements OnInit {
   //  position: string = this.lat + ',' + this.lng;
+  geo;
+  title;
+  direction;
   location;
-  markers = [];
   positions = [];
+  facilities = [];
   facilitiesLatLng = [];
   constructor(private http: Http, private apikey: ApiKey, private googlemapservice: GoogleMapService, private campInfoDataService: CampInfoDataService) { }
 
@@ -24,11 +27,15 @@ export class MapComponent implements OnInit {
   search(place) {
     this.location = place;
     this.googlemapservice.search(place).subscribe((data) => {
+      this.geo = {lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng};
       this.campInfoDataService.fetchCampsites(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng).subscribe((facilities) => {
         for (let i = 0; i < facilities.RECDATA.length; i++) {
-          this.markers.push({lat: facilities.RECDATA[i].FacilityLatitude, lng: facilities.RECDATA[i].FacilityLongitude});
+          if (facilities.RECDATA[i].FacilityTypeDescription === 'Camping') {
+            this.facilities.push(facilities.RECDATA[i]);
+          }
         }
-        console.log(this.markers);
+      console.log(facilities.RECDATA);
+      return  this.facilities;
       });
     });
   }
@@ -43,5 +50,16 @@ export class MapComponent implements OnInit {
   onMapReady(map) {
     console.log('map', map);
     console.log('markers', map.markers);
+  }
+
+  clickMarker(pos) {
+    var marker = pos.target;
+    this.title = pos.target.title;
+    for (var i = 0; i < this.facilities.length; i++) {
+      if(this.facilities[i].FacilityName === this.title) {
+        this.direction = this.facilities[i].FacilityDirections;
+      }
+    }
+    marker.nguiMapComponent.openInfoWindow('iw', marker);
   }
 }

@@ -10,11 +10,13 @@
   mapTypeId="terrain"
   (mapClick)="onMapClick($event)"
   (mapReady$)="onMapReady($event)">
-  <marker *ngFor="let pos of markers" [position]="pos"></marker>
-  <map-circle center="5.337113527125027, 8.789215082069859"
-      [strokeColor]="'#FF0000'"
-      [strokeOpacity]="0.8"
-      [strokeWeight]="2"
-      [editable]="true"
-      radius="100"></map-circle>
+  <marker *ngFor="let fac of facilities" [position]="[fac.FacilityLatitude,fac.FacilityLongitude]" (click)="clickMarker($event)" [title]="fac.FacilityName"></marker>
+  <info-window id="iw">
+    <h4>{{title}}</h4>
+    <p>{{direction}}</p>
+    <button (click)="seeDetail()">See Detail</button>
+  </info-window>
 </ngui-map>
+
+
+<app-campground-data></app-campground-data>
