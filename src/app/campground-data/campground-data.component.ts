@@ -21,7 +21,7 @@ export class CampgroundDataComponent implements OnInit {
 
   ngOnInit() {
   }
-  findCampsites(lat1, long1){
+  findCampsites(lat1, long1) {
     this.campInfoDataService.fetchCampsites(lat1, long1).subscribe((data1) => {
       console.log(data1.RECDATA);
 
@@ -33,7 +33,7 @@ export class CampgroundDataComponent implements OnInit {
       }
       console.log(this.facId);
       this.campInfoDataService.test(this.facId);
-    })
+    });
   }
 
 }

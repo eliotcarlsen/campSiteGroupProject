@@ -80,9 +80,10 @@ export class MapComponent implements OnInit {
     this.title = pos.target.title;
     this.lat = marker.getPosition().lat();
     this.lng = marker.getPosition().lng();
-    this.weatherService.getWeather(this.lat, this.lng).subscribe((data) => {
-      this.markerDayTemp = ((data.list[0].temp.day - 273) * 9 / 5 + 32).toFixed(0);
-      this.markerEveTemp = ((data.list[0].temp.eve - 273) * 9 / 5 + 32).toFixed(0);
+    this.weatherService.getWeather(this.lat, this.lng).subscribe((weather) => {
+      this.markerDayTemp = ((weather.list[0].temp.day - 273) * 9 / 5 + 32).toFixed(0);
+      this.markerEveTemp = ((weather.list[0].temp.eve - 273) * 9 / 5 + 32).toFixed(0);
+      this.weathers = weather;
     });
     for (var i = 0; i < this.facilities.length; i++) {
       if(this.facilities[i].FacilityName === this.title) {
@@ -93,38 +94,37 @@ export class MapComponent implements OnInit {
   }
 
   seeDetail(facilities) {
+    this.threeDayForcast = [];
     for (var i = 0; i < facilities.length; i++) {
       if (facilities[i].FacilityName === this.title) {
         this.facility = facilities[i];
       }
     }
 
-    this.weatherService.getWeather(this.facility.FacilityLatitude, this.facility.FacilityLongitude).subscribe(
-      (weather) => {
-        this.weathers = weather;
-        console.log(this.weathers);
-        for (let i = 0; i < 3; i++) {
-          var Maxtemp = this.weathers.list[i].temp.max * 9 / 5 - 459.67;
-          var maxTemp = Maxtemp.toFixed(0);
-          var Mintemp = this.weathers.list[i].temp.min * 9 / 5 - 459.67;
-          var minTemp = Mintemp.toFixed(0);
-          if (this.weathers.list[i].weather[0].main === 'Snow') {
-            this.condition = 'snow.jpeg';
-            this.output = 'Chance of Snow';
-          }else if (this.weathers.list[i].weather[0].main === 'Clouds') {
-            this.condition = 'cloudy.jpeg';
-            this.output = 'Partly Cloudy';
-          }else if (this.weathers.list[i].weather[0].main === 'Rain') {
-            this.condition = 'rain.png';
-            this.output = 'Chance of Rain';
-          }else if (this.weathers.list[i].weather[0].main === 'Clear') {
-            this.condition = 'sun.gif';
-            this.output = 'Sunny';
-          }
-          this.threeDayForcast.push(maxTemp, minTemp, this.condition, this.output);
+    this.weatherService.getWeather(this.facility.FacilityLatitude, this.facility.FacilityLongitude).subscribe((data) => {
+      for (let i = 0; i < 3; i ++) {
+        var Maxtemp = data.list[i].temp.max * 9 / 5 - 459.67;
+        var maxTemp = Maxtemp.toFixed(0);
+        var Mintemp = data.list[i].temp.min * 9 / 5 - 459.67;
+        var minTemp = Mintemp.toFixed(0);
+        if (((data.list[i].weather[0].description).toLowerCase()).includes('snow')) {
+          this.condition = 'snow.jpeg';
+          this.output = data.list[i].weather[0].description;
+        }else if (((data.list[i].weather[0].description).toLowerCase()).includes('cloud')) {
+          this.condition = 'cloudy.jpeg';
+          this.output = data.list[i].weather[0].description;
+        }else if (((data.list[i].weather[0].description).toLowerCase()).includes('rain')) {
+          this.condition = 'rain.png';
+          this.output = data.list[i].weather[0].description;
+        }else if (((data.list[i].weather[0].description).toLowerCase()).includes('clear')) {
+          this.condition = 'sun.gif';
+          this.output = data.list[i].weather[0].description;
         }
-      }
-    );
+
+        this.threeDayForcast.push({maxTemp: maxTemp, minTemp: minTemp, condition: this.condition, output: this.output});
+       }
+       console.log(this.threeDayForcast);
+    });
     this.campInfoDataService.test(this.facility.FacilityID).subscribe((data) => {
       this.campsites = data.RECDATA;
       this.totalCampsitesNum = data.METADATA.RESULTS.TOTAL_COUNT;
