@@ -12,8 +12,11 @@
   </nav>
 </div>
 
+
 <p>welcome {{(user | async)?.displayName}}</p>
-<li>signed in as {{(user | async)?.email}}</li>
+<div *ngIf="(user | async)?.email">
+  <p>signed in as {{(user | async)?.email}}</p>
+</div>
 <img src="{{(user | async)?.photoURL}}">
 <button (click)="logout()">Log Out</button>
 
