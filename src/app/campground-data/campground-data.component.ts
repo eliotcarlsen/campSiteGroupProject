@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CampInfoDataService } from '../camp-info-data.service';
 import { ApiKey } from '../RIDB-API';
 
@@ -12,6 +12,7 @@ export class CampgroundDataComponent implements OnInit {
   recAreas;
   facId=[];
   data1=[];
+  
   constructor(private campInfoDataService: CampInfoDataService, private apikey: ApiKey) { }
 
   ngOnInit() {
