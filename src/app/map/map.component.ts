@@ -61,7 +61,6 @@ export class MapComponent implements OnInit {
             this.facilities.push(facilities.RECDATA[i]);
           }
         }
-      console.log(facilities.RECDATA);
       return  this.facilities;
       });
     });
@@ -70,13 +69,6 @@ export class MapComponent implements OnInit {
   onMapClick(event) {
     this.positions.push(event.latLng);
     event.target.panTo(event.latLng);
-    console.log(event.latLng.lat());
-    console.log(event.latLng.lng());
-  }
-
-  onMapReady(map) {
-    console.log('map', map);
-    console.log('markers', map.markers);
   }
 
   clickMarker(pos) {
@@ -127,13 +119,11 @@ export class MapComponent implements OnInit {
 
         this.threeDayForcast.push({maxTemp: maxTemp, minTemp: minTemp, condition: this.condition, output: this.output});
        }
-       console.log(this.threeDayForcast);
     });
     this.campInfoDataService.test(this.facility.FacilityID).subscribe((data) => {
       this.campsites = data.RECDATA;
       this.totalCampsitesNum = data.METADATA.RESULTS.TOTAL_COUNT;
       this.currentCount = data.METADATA.RESULTS.CURRENT_COUNT;
-      console.log(this.campsites);
     });
   }
 

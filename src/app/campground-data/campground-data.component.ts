@@ -23,15 +23,12 @@ export class CampgroundDataComponent implements OnInit {
   }
   findCampsites(lat1, long1) {
     this.campInfoDataService.fetchCampsites(lat1, long1).subscribe((data1) => {
-      console.log(data1.RECDATA);
-
       for (let i = 0; i < data1.RECDATA.length; i++) {
         if (data1.RECDATA[i].FacilityTypeDescription === 'Camping') {
           this.facId.push(data1.RECDATA[i].FacilityID);
           this.data1.push(data1.RECDATA[i]);
         }
       }
-      console.log(this.facId);
       this.campInfoDataService.test(this.facId);
     });
   }
