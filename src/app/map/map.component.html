@@ -24,8 +24,7 @@
   <ngui-map
     zoom="8" [center]="location"
     mapTypeId="terrain"
-    (mapClick)="onMapClick($event)"
-    (mapReady$)="onMapReady($event)">
+    (mapClick)="onMapClick($event)">
     <marker *ngFor="let fac of facilities" [position]="[fac.FacilityLatitude,fac.FacilityLongitude]" (click)="clickMarker($event)" [title]="fac.FacilityName"></marker>
     <info-window id="iw">
       <h4>{{title}}</h4>
