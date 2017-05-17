@@ -1,25 +1,37 @@
-<h2>Map</h2>
-
-<div class="form-group">
-  <input #place placeholder="enter a place">
-  <button (click)="search(place.value); place.value=''">Search</button>
+<div class="container">
+  <nav class="navbar">
+      <div class="navbar-header">
+        <p class="navbar-brand"><span class="glyphicon glyphicon-tree-conifer"></span> Camp Finder</p>
+            <form class="navbar-form navbar-right">
+              <div class="form-group">
+                <input class="form-control" #place placeholder="Search by City">
+              <button class="btn btn-success" (click)="search(place.value); place.value=''">Search</button>
+            </div>
+            </form>
+      </div>
+  </nav>
 </div>
 
-<ngui-map
-  zoom="7" [center]="location"
-  mapTypeId="terrain"
-  (mapClick)="onMapClick($event)"
-  (mapReady$)="onMapReady($event)">
-  <marker *ngFor="let fac of facilities" [position]="[fac.FacilityLatitude,fac.FacilityLongitude]" (click)="clickMarker($event)" [title]="fac.FacilityName"></marker>
-  <info-window id="iw">
-    <h4>{{title}}</h4>
-    <p>{{direction}}</p>
-    <button (click)="seeDetail()">See Detail</button>
-  </info-window>
-</ngui-map>
+<div id="map">
+  <ngui-map
+    zoom="8" [center]="location"
+    mapTypeId="terrain"
+    (mapClick)="onMapClick($event)"
+    (mapReady$)="onMapReady($event)">
+    <marker *ngFor="let fac of facilities" [position]="[fac.FacilityLatitude,fac.FacilityLongitude]" (click)="clickMarker($event)" [title]="fac.FacilityName"></marker>
+    <info-window id="iw">
+      <h4>{{title}}</h4>
+      <p>{{direction}}</p>
+      <button (click)="seeDetail()">See Detail</button>
+    </info-window>
+  </ngui-map>
+</div>
+
 <div class="row">
   <div class="col-md-12">
     <app-campground-data></app-campground-data>
     <app-weather></app-weather>
   </div>
 </div>
+
+<app-cleverbot></app-cleverbot>

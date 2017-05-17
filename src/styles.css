@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+#map ngui-map{
+  display: block;
+  height: 60vh;
+}
+
+.Gmap {
+  /*background: red;*/
+}
+
+.container-fluid {
+  max-width: 100%;
+}
+
+.navbar{
+  height: 10px;
+}
