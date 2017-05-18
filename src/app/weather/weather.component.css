@@ -3,7 +3,7 @@ img{
 
 }
 .maxIsCool{
-  text-align: center;
+  text-align: left;
 }
 
 h3{
@@ -13,9 +13,9 @@ font-weight: 200;
 }
 
 .weather{
+  margin-left: 30px;
   text-align: center;
-  width: 400px;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
   color: #4B515D;
 }
 .forecast{

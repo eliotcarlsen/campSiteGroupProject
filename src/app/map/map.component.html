@@ -31,14 +31,16 @@
     zoom="8" [center]="location"
     mapTypeId="terrain"
     (mapClick)="onMapClick($event)">
-    <marker *ngFor="let fac of facilities" [position]="[fac.FacilityLatitude,fac.FacilityLongitude]" (click)="clickMarker($event)" [title]="fac.FacilityName"></marker>
+    <marker *ngFor="let fac of facilities" [position]="[fac.FacilityLatitude,fac.FacilityLongitude]" (click)="clickMarker($event)" [title]="fac.FacilityName" [icon]="{url:'https://img.clipartfest.com/77c2b6f93a2c4f2ed27d9674bacd6a4e_event20tent20icon-tent-icon-clipart_825-830.png', scaledSize:[26 ,26]}"></marker>
     <info-window id="iw">
       <h4>{{title}}</h4>
       <p>{{directions}}</p>
       <li>Day Temp: {{markerDayTemp}}</li>
       <li>Night Temp: {{markerEveTemp}}</li>
-      <button (click)="seeDetail(facilities)">See Detail</button>
-      <button (click)="getDic()">Get Directions</button>
+      <div class="map-buttons">
+        <button class="btn btn-warning btn-sm" (click)="seeDetail(facilities)">See Detail</button>
+        <button class="btn btn-sm" (click)="getDic(title)">Get Directions</button>
+      </div>
     </info-window>
     <directions-renderer [suppressMarkers]="true" [draggable]="true"
     panel="#direction"
@@ -50,7 +52,11 @@
 
 <app-cleverbot></app-cleverbot>
 
+<p *ngIf="dictitle">
+  Directions to {{dictitle}}
+</p>
 <div id="direction"></div>
+
 <div class="row">
   <app-campground-data [facility]="facility" [totalCampsitesNum]="totalCampsitesNum" [currentCount]="currentCount" [campsites]="campsites"></app-campground-data>
 </div>

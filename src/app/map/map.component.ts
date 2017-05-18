@@ -43,6 +43,7 @@ export class MapComponent implements OnInit {
   weathers;
   condition;
   output;
+  dictitle;
   @ViewChild(DirectionsRenderer) directionsRendererDirective: DirectionsRenderer;
   directionsRenderer: google.maps.DirectionsRenderer;
   directionsResult: google.maps.DirectionsResult;
@@ -138,7 +139,8 @@ export class MapComponent implements OnInit {
       this.currentCount = this.campsites.length;
     });
   }
-  getDic(){
+  getDic(title){
+    this.dictitle = title;
     var markerDest = {lat: this.lat, lng: this.lng};
     this.direction = {
       origin: this.geo,

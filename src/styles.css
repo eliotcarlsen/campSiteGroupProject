@@ -28,6 +28,11 @@
   /*background: #6a8446;*/
 }
 
+.map-buttons button.btn-warning {
+  background-color: #f27a21;
+  border-color: #f27a21;
+}
+
 .navbar .btn-success:hover {
   background-color: #6f9b31;
   border-color: #7a9e48;
@@ -93,7 +98,7 @@ div.account p.right{
 }
 
 .glyphicon-tent {
-  color: #4B515D;
+  color: #f27a21;
   font-size: 24px;
 }
 
@@ -141,4 +146,13 @@ div.account p.right{
 .facilities h4 {
   font-size: 22px;
   font-weight: 200;
+}
+
+#direction {
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+.map-buttons button {
+  margin-top: 10px;
 }
