@@ -8,11 +8,9 @@
     <h4>{{totalCampsitesNum}} campsites total.</h4>
   </div>
   </div>
-
-      <div class="col-md-5 jerry">
-        <div *ngFor="let attribute of campsites[0].ATTRIBUTES" class="col-md-4">
-          <p>{{attribute.AttributeName}}: {{attribute.AttributeValue}}</p>
-        </div>
+    <div class="col-md-5 jerry">
+      <div *ngFor="let attribute of campsites[0].ATTRIBUTES" class="col-md-4">
+        <p>{{attribute.AttributeName}}: {{attribute.AttributeValue}}</p>
       </div>
-
+    </div>
 </div>

@@ -34,15 +34,23 @@
     <marker *ngFor="let fac of facilities" [position]="[fac.FacilityLatitude,fac.FacilityLongitude]" (click)="clickMarker($event)" [title]="fac.FacilityName"></marker>
     <info-window id="iw">
       <h4>{{title}}</h4>
-      <p>{{direction}}</p>
+      <p>{{directions}}</p>
       <li>Day Temp: {{markerDayTemp}}</li>
       <li>Night Temp: {{markerEveTemp}}</li>
       <button (click)="seeDetail(facilities)">See Detail</button>
+      <button (click)="getDic()">Get Directions</button>
     </info-window>
+    <directions-renderer [suppressMarkers]="true" [draggable]="true"
+    panel="#direction"
+    (directions_changed)="directionsChanged()"
+    [directions-request]="direction">
+    </directions-renderer>
   </ngui-map>
 </div>
 
 <app-cleverbot></app-cleverbot>
+
+<div id="direction"></div>
 <div class="row">
   <app-weather [facility]="facility" [threeDayForcast]="threeDayForcast"></app-weather>
 </div>
