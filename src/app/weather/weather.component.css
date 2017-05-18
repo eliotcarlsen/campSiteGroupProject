@@ -5,19 +5,20 @@ img{
 .maxIsCool{
   text-align: center;
 }
+
 h3{
-color: red;
+color: #4B515D;
+font-size: 18px;
+font-weight: 200;
 }
+
 .weather{
   text-align: center;
-  margin-left: 370px;
-  border:2px solid grey;
   width: 400px;
   margin-bottom: 15px;
-
-  color: #751aff;
+  color: #4B515D;
 }
 .forecast{
   padding-top: 5px;
-  
+
 }

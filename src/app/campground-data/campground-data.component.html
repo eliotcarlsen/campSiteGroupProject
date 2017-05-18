@@ -1,18 +1,19 @@
 <div class="panel panel-default" *ngIf="facility">
   <div class="panel-body">
-    <div class="col-lg-8">
-       <h2>{{facility.FacilityName}}</h2>
-       <h4>Facility Phone:{{facility.FacilityPhone}}</h4>
+    <div class="col-md-8 facilities">
+       <h2><strong>{{facility.FacilityName}}</strong></h2>
+       <h4><strong>Facility Phone:</strong> {{facility.FacilityPhone}}</h4>
      </div>
-     <div class="col-lg-4">
-    <h4>{{totalCampsitesNum}} campsites total.</h4>
-  </div>
-  </div>
 
-      <div class="col-md-5 jerry">
+     <div class="col-md-4 campsites">
+      <h4>{{totalCampsitesNum}} campsites</h4>
+    </div>
+
+      <div class="col-md-12 jerry">
         <div *ngFor="let attribute of campsites[0].ATTRIBUTES" class="col-md-4">
-          <p>{{attribute.AttributeName}}: {{attribute.AttributeValue}}</p>
+          <p><strong>{{attribute.AttributeName}}:</strong> {{attribute.AttributeValue}}</p>
         </div>
       </div>
 
+  </div>
 </div>

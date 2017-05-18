@@ -2,26 +2,39 @@
   <div class="container">
     <div class="row">
       <div class="maxIsCool">
-        <div class="col-lg-4 forecast">
-          <img src="assets/img/{{threeDayForcast[0].condition}}"><br>
-          {{threeDayForcast[0].output}}<br>
-          High: {{threeDayForcast[0].maxTemp}} °F<br>
-          Low: {{threeDayForcast[0].minTemp}} °F<br>
+        <h2>Weather at {{facility.FacilityName}}</h2>
+        <div class="col-md-4 forecast">
           <h3>Today</h3>
+          <img src="assets/img/{{threeDayForcast[0].condition}}">
+          <br>
+          {{threeDayForcast[0].output}}
+          <br>
+          High: {{threeDayForcast[0].maxTemp}} °F
+          <br>
+          Low: {{threeDayForcast[0].minTemp}} °F
+          <br>
         </div>
-        <div class="col-lg-4 forecast">
-          <img src="assets/img/{{threeDayForcast[1].condition}}"><br>
-          {{threeDayForcast[1].output}}<br>
-          High: {{threeDayForcast[1].maxTemp}} °F<br>
-          Low: {{threeDayForcast[1].minTemp}} °F<br>
+        <div class="col-md-4 forecast">
           <h3>Tomorrow</h3>
+          <img src="assets/img/{{threeDayForcast[1].condition}}">
+          <br>
+          {{threeDayForcast[1].output}}
+          <br>
+          High: {{threeDayForcast[1].maxTemp}} °F
+          <br>
+          Low: {{threeDayForcast[1].minTemp}} °F
+          <br>
         </div>
-        <div class="col-lg-4 forecast">
-          <img src="assets/img/{{threeDayForcast[2].condition}}"><br>
-          {{threeDayForcast[2].output}}<br>
-          High: {{threeDayForcast[2].maxTemp}} °F<br>
-          Low: {{threeDayForcast[2].minTemp}} °F<br>
+        <div class="col-md-4 forecast">
           <h3>The Next Day</h3>
+          <img src="assets/img/{{threeDayForcast[2].condition}}">
+          <br>
+          {{threeDayForcast[2].output}}
+          <br>
+          High: {{threeDayForcast[2].maxTemp}} °F
+          <br>
+          Low: {{threeDayForcast[2].minTemp}} °F
+          <br>
         </div>
       </div>
     </div>
