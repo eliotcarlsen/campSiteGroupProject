@@ -37,8 +37,9 @@
 </div>
 
 <app-cleverbot></app-cleverbot>
-
-<div class="col-md-12">
-  <app-campground-data [facility]="facility" [totalCampsitesNum]="totalCampsitesNum" [currentCount]="currentCount" [campsites]="campsites"></app-campground-data>
+<div class="row">
   <app-weather [facility]="facility" [threeDayForcast]="threeDayForcast"></app-weather>
+</div>
+<div class="row">
+  <app-campground-data [facility]="facility" [totalCampsitesNum]="totalCampsitesNum" [currentCount]="currentCount" [campsites]="campsites"></app-campground-data>
 </div>

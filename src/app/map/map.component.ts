@@ -32,7 +32,7 @@ export class MapComponent implements OnInit {
   markerDayTemp;
   markerEveTemp;
   facility;
-  campsites;
+  campsites = [];
   totalCampsitesNum;
   currentCount;     // output
   positions = [];
@@ -121,9 +121,16 @@ export class MapComponent implements OnInit {
        }
     });
     this.campInfoDataService.test(this.facility.FacilityID).subscribe((data) => {
-      this.campsites = data.RECDATA;
+
+      this.campsites = [];
+      for(var i = 0; i<data.RECDATA.length; i++){
+        if(data.RECDATA[i].CampsiteType !== "MANAGEMENT"){
+          this.campsites.push(data.RECDATA[i]);
+        }
+      }
+      console.log(this.campsites);
       this.totalCampsitesNum = data.METADATA.RESULTS.TOTAL_COUNT;
-      this.currentCount = data.METADATA.RESULTS.CURRENT_COUNT;
+      this.currentCount = this.campsites.length;
     });
   }
 

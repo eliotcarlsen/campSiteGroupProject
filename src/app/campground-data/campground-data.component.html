@@ -1,22 +1,18 @@
 <div class="panel panel-default" *ngIf="facility">
   <div class="panel-body">
-    <h4>FacilityID:{{facility.FacilityID}}</h4>
-    <h4>FacilityName:{{facility.FacilityName}}</h4>
-    <h4>Facility Phone:{{facility.FacilityPhone}}</h4>
-    <h4>FacilityTypeDescription:{{facility.FacilityTypeDescription}}</h4>
-    <h4>LegacyFacilityID:{{facility.LegacyFacilityID}}</h4>
-    <h4>Last Updated Date: {{facility.LastUpdatedDate}}</h4>
-    <h4>In {{facility.FacilityName}} area, there are {{totalCampsitesNum}} campsites in total. There are {{currentCount}} campsites showing below</h4>
+    <div class="col-lg-8">
+       <h2>{{facility.FacilityName}}</h2>
+       <h4>Facility Phone:{{facility.FacilityPhone}}</h4>
+     </div>
+     <div class="col-lg-4">
+    <h4>{{totalCampsitesNum}} campsites total.</h4>
   </div>
-  <ol class="col-md-6">
-    <div class="campsites" *ngFor="let campsite of campsites">
-      <li>
-        <em>Campsite Name: {{campsite.CampsiteName}}</em>
-        <p>Type: {{campsite.CampsiteType}}</p>
-        <div *ngFor="let attribute of campsite.ATTRIBUTES">
+  </div>
+
+      <div class="col-md-5 jerry">
+        <div *ngFor="let attribute of campsites[0].ATTRIBUTES" class="col-md-4">
           <p>{{attribute.AttributeName}}: {{attribute.AttributeValue}}</p>
         </div>
-      </li>
-    </div>
-  </ol>
+      </div>
+
 </div>

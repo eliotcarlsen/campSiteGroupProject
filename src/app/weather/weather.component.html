@@ -1,27 +1,27 @@
-<div *ngIf="facility">
+<div *ngIf="facility" class="weather">
   <div class="container">
     <div class="row">
       <div class="maxIsCool">
-        <div class="col-lg-4">
-          <h3>Today</h3>
+        <div class="col-lg-4 forecast">
           <img src="assets/img/{{threeDayForcast[0].condition}}"><br>
           {{threeDayForcast[0].output}}<br>
           High: {{threeDayForcast[0].maxTemp}} °F<br>
           Low: {{threeDayForcast[0].minTemp}} °F<br>
+          <h3>Today</h3>
         </div>
-        <div class="col-lg-4">
-          <h3>Tomorrow</h3>
+        <div class="col-lg-4 forecast">
           <img src="assets/img/{{threeDayForcast[1].condition}}"><br>
           {{threeDayForcast[1].output}}<br>
           High: {{threeDayForcast[1].maxTemp}} °F<br>
           Low: {{threeDayForcast[1].minTemp}} °F<br>
+          <h3>Tomorrow</h3>
         </div>
-        <div class="col-lg-4">
-          <h3>The Next Day</h3>
+        <div class="col-lg-4 forecast">
           <img src="assets/img/{{threeDayForcast[2].condition}}"><br>
           {{threeDayForcast[2].output}}<br>
           High: {{threeDayForcast[2].maxTemp}} °F<br>
           Low: {{threeDayForcast[2].minTemp}} °F<br>
+          <h3>The Next Day</h3>
         </div>
       </div>
     </div>

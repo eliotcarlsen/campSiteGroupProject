@@ -1,9 +1,23 @@
 img{
   width: 60px;
+
 }
 .maxIsCool{
   text-align: center;
 }
 h3{
 color: red;
+}
+.weather{
+  text-align: center;
+  margin-left: 370px;
+  border:2px solid grey;
+  width: 400px;
+  margin-bottom: 15px;
+
+  color: #751aff;
+}
+.forecast{
+  padding-top: 5px;
+  
 }
