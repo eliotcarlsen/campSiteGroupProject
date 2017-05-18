@@ -22,6 +22,12 @@
   color: inherit;
 }
 
+.navbar .btn-success {
+  background-color: #6a8446;
+  border-color: #7a9e48;
+  /*background: #6a8446;*/
+}
+
 #cleverbot  {
   margin: 12px 0;
   height: 30px;
