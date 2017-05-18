@@ -28,6 +28,11 @@
   /*background: #6a8446;*/
 }
 
+.navbar .btn-success:hover {
+  background-color: #6f9b31;
+  border-color: #7a9e48;
+}
+
 #cleverbot  {
   margin: 12px 0;
   height: 30px;
