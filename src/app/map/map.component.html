@@ -47,14 +47,17 @@
     (directions_changed)="directionsChanged()"
     [directions-request]="direction">
     </directions-renderer>
+    <div *ngIf="direction">
+      <traffic-layer></traffic-layer>
+    </div>
   </ngui-map>
 </div>
 
 <app-cleverbot></app-cleverbot>
 
-<p *ngIf="dictitle">
+<h3 *ngIf="dictitle">
   Directions to {{dictitle}}
-</p>
+</h3>
 <div id="direction"></div>
 
 <div class="row">
