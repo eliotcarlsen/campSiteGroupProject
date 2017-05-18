@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,ViewChild, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { ApiKey } from '../RIDB-API';
 import { Http } from '@angular/http';
 import { GoogleMapService } from '../google-map.service';
@@ -9,6 +9,7 @@ import { FirebaseService } from '../firebase.service';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { DirectionsRenderer } from '@ngui/map';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class MapComponent implements OnInit {
   eveTemp;
   geo;
   title;
-  direction;         // marker direction
+  directions;         // marker direction
   location;
   lat;              // marker lat
   lng;             // marker lng
@@ -42,6 +43,10 @@ export class MapComponent implements OnInit {
   weathers;
   condition;
   output;
+  @ViewChild(DirectionsRenderer) directionsRendererDirective: DirectionsRenderer;
+  directionsRenderer: google.maps.DirectionsRenderer;
+  directionsResult: google.maps.DirectionsResult;
+  direction;
   constructor(private http: Http, private googlemapservice: GoogleMapService, private campInfoDataService: CampInfoDataService, private weatherService: WeatherService, private firebaseService: FirebaseService, private afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
   }
@@ -83,7 +88,7 @@ export class MapComponent implements OnInit {
     });
     for (var i = 0; i < this.facilities.length; i++) {
       if(this.facilities[i].FacilityName === this.title) {
-        this.direction = this.facilities[i].FacilityDirections;
+        this.directions = this.facilities[i].FacilityDirections;
       }
     }
     marker.nguiMapComponent.openInfoWindow('iw', marker);
@@ -132,6 +137,14 @@ export class MapComponent implements OnInit {
       this.totalCampsitesNum = data.METADATA.RESULTS.TOTAL_COUNT;
       this.currentCount = this.campsites.length;
     });
+  }
+  getDic(){
+    var markerDest = {lat: this.lat, lng: this.lng};
+    this.direction = {
+      origin: this.geo,
+      destination: markerDest,
+      travelMode: 'DRIVING'
+    };
   }
 
   logout() {
