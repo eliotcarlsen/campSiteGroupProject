@@ -1,9 +1,10 @@
-# CampSite
+# CampSiteFinderApplication
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
-
+Run `npm install` in your terminal to install node packages.
+Run `bower install` in your terminal to install front end packages.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
